@@ -700,7 +700,7 @@ function GameScreen({ config, onBack, showNotification, vsBot }) {
         {/* Başlık */}
         <div className="flex items-center gap-2">
           <img src={logoImg} alt="Logo" className="w-5 h-5 object-contain" />
-          <span className="font-serif font-bold text-white text-sm tracking-wide">Ekranda oyna</span>
+          <span className="font-serif font-bold text-white text-sm tracking-wide">{vsBot ? "Bot ile Oyna" : "Ekranda Oyna"}</span>
         </div>
       </div>
 
