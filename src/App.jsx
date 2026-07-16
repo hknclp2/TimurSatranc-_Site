@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sidebar } from "./components/Sidebar";
 import { MainMenu } from "./components/MainMenu";
+import { MobileMenu } from "./components/MobileMenu";
+import { EkrandaOyna } from "./components/EkrandaOyna";
 import { UnityCanvas } from "./components/UnityCanvas";
 import { MoveHistory } from "./components/MoveHistory";
 import { PieceGuide } from "./components/PieceGuide";
 import { useUnityBridge } from "./hooks/useUnityBridge";
 
+// Responsive hook: mobil (<768px) ise true döner
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+}
+
 function App() {
+  const isMobile = useIsMobile();
   const [activeTab, setActiveTab] = useState("home");
   const [user, setUser] = useState({ name: "Misafir", loggedIn: false });
   const [isGuideOpen, setIsGuideOpen] = useState(false);
@@ -56,6 +71,47 @@ function App() {
     showNotification("Ana menüye geri dönüldü.", "info");
   };
 
+  // ── MOBİL GÖRÜNÜM ──
+  // <768px ekranlarda tüm masaüstü layout yerine MobileMenu gösterilir
+  if (isMobile) {
+    return (
+      <div className="app-container min-h-screen w-full relative">
+        <MobileMenu showNotification={showNotification} />
+
+        {/* Toast bildirimleri mobilde de çalışır */}
+        <div className="fixed bottom-6 left-4 right-4 z-[200] flex flex-col gap-3 pointer-events-none">
+          {notifications.map((notif) => (
+            <div
+              key={notif.id}
+              className={`pointer-events-auto p-4 rounded-2xl shadow-xl border backdrop-blur-md flex items-start gap-3 bg-[#0a2218]/95 animate-fade-in-up ${
+                notif.type === "success"
+                  ? "border-emerald-500/20 border-l-4 border-l-emerald-500 text-white"
+                  : notif.type === "error"
+                    ? "border-red-500/20 border-l-4 border-l-red-500 text-white"
+                    : "border-accent-cyan/20 border-l-4 border-l-accent-cyan text-white"
+              }`}
+            >
+              {notif.type === "success" ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-emerald-400 shrink-0">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              ) : notif.type === "error" ? (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-red-400 shrink-0">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-accent-cyan shrink-0">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+              )}
+              <p className="text-xs font-medium leading-normal">{notif.message}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="app-container min-h-screen w-full relative flex text-white font-primary overflow-hidden">
       
@@ -64,7 +120,10 @@ function App() {
         activeTab={activeTab}
         setActiveTab={(tab) => {
           setActiveTab(tab);
-          if (tab !== "home") {
+          // Only show "under construction" toast for tabs that aren't implemented yet
+          // 'about' has a full page, so exclude it from the notification
+          const underConstructionTabs = ["shop", "tournaments", "profile", "settings", "help"];
+          if (underConstructionTabs.includes(tab)) {
             const labels = {
               shop: "Mağaza",
               tournaments: "Turnuvalar",
@@ -84,71 +143,78 @@ function App() {
 
       {/* DYNAMIC INTERFACE LAYERS */}
       {isUnityActive ? (
-        // Game active state (Canvas in background + Overlay GUI layers on top)
-        <>
-          {/* Background Unity Canvas */}
-          <UnityCanvas
-            unityProvider={unityProvider}
-            isLoaded={isLoaded}
-            loadingProgression={loadingProgression}
-            isDemoMode={isDemoMode}
-            simulateMove={() => {
-              const move = simulateMove();
-              if (move) {
-                showNotification(`Hamle gönderildi: ${move}`, "success");
-              } else {
-                showNotification("Tüm simülasyon hamleleri tamamlandı.", "info");
-              }
-            }}
+        // Game active state
+        gameMode === "screen" ? (
+          // 2D Local Board — rendered entirely in React
+          <EkrandaOyna
+            onBack={handleExitGame}
+            showNotification={showNotification}
           />
+        ) : (
+          // Unity WebGL (Bot / Online) — Canvas in background + Overlay GUI on top
+          <>
+            {/* Background Unity Canvas */}
+            <UnityCanvas
+              unityProvider={unityProvider}
+              isLoaded={isLoaded}
+              loadingProgression={loadingProgression}
+              isDemoMode={isDemoMode}
+              simulateMove={() => {
+                const move = simulateMove();
+                if (move) {
+                  showNotification(`Hamle gönderildi: ${move}`, "success");
+                } else {
+                  showNotification("Tüm simülasyon hamleleri tamamlandı.", "info");
+                }
+              }}
+            />
 
-          {/* Foreground UI Overlay Layer */}
-          {isLoaded && (
-            <div className="ui-overlay-layer fixed inset-0 w-full h-full pointer-events-none">
-              
-              {/* Top Status Header */}
-              <div className="absolute top-6 left-36 right-[336px] flex justify-between items-center bg-black/45 border border-white/5 py-3 px-6 rounded-2xl backdrop-blur-md interactive-overlay">
-                <div className="flex items-center gap-3">
-                  <span className="text-[10px] text-accent-cyan font-bold tracking-widest uppercase bg-accent-cyan/10 px-2.5 py-1 rounded-md border border-accent-cyan/10">
-                    CANLI
-                  </span>
-                  <h2 className="font-serif text-sm font-semibold text-white tracking-wide">
-                    {gameMode === "bot" 
-                      ? "Zahir Yapay Zeka Karşılaşması" 
-                      : gameMode === "online" 
-                        ? "Dereceli Çevrimiçi Maç" 
-                        : "Yerel Ekranda Çekişme"}
-                  </h2>
-                </div>
+            {/* Foreground UI Overlay Layer */}
+            {isLoaded && (
+              <div className="ui-overlay-layer fixed inset-0 w-full h-full pointer-events-none">
                 
-                {isDemoMode && (
-                  <div className="text-[10px] text-amber-500 font-semibold bg-amber-500/10 px-3 py-1 rounded-md border border-amber-500/10">
-                    Sanal Önizleme Aktif
+                {/* Top Status Header */}
+                <div className="absolute top-6 left-36 right-[336px] flex justify-between items-center bg-black/45 border border-white/5 py-3 px-6 rounded-2xl backdrop-blur-md interactive-overlay">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[10px] text-accent-cyan font-bold tracking-widest uppercase bg-accent-cyan/10 px-2.5 py-1 rounded-md border border-accent-cyan/10">
+                      CANLI
+                    </span>
+                    <h2 className="font-serif text-sm font-semibold text-white tracking-wide">
+                      {gameMode === "bot" 
+                        ? "Zahir Yapay Zeka Karşılaşması" 
+                        : "Dereceli Çevrimiçi Maç"}
+                    </h2>
                   </div>
-                )}
+                  
+                  {isDemoMode && (
+                    <div className="text-[10px] text-amber-500 font-semibold bg-amber-500/10 px-3 py-1 rounded-md border border-amber-500/10">
+                      Sanal Önizleme Aktif
+                    </div>
+                  )}
+                </div>
+
+                {/* Right Side Move History Panel */}
+                <MoveHistory
+                  moveHistory={moveHistory}
+                  simulateMove={() => {
+                    const move = simulateMove();
+                    if (move) {
+                      showNotification(`Hamle gönderildi: ${move}`, "success");
+                    }
+                  }}
+                  isDemoMode={isDemoMode}
+                  gameMode={gameMode}
+                />
+
+                {/* Left Side Sliding Piece Guide */}
+                <PieceGuide
+                  isOpen={isGuideOpen}
+                  onClose={() => setIsGuideOpen(false)}
+                />
               </div>
-
-              {/* Right Side Move History Panel */}
-              <MoveHistory
-                moveHistory={moveHistory}
-                simulateMove={() => {
-                  const move = simulateMove();
-                  if (move) {
-                    showNotification(`Hamle gönderildi: ${move}`, "success");
-                  }
-                }}
-                isDemoMode={isDemoMode}
-                gameMode={gameMode}
-              />
-
-              {/* Left Side Sliding Piece Guide */}
-              <PieceGuide
-                isOpen={isGuideOpen}
-                onClose={() => setIsGuideOpen(false)}
-              />
-            </div>
-          )}
-        </>
+            )}
+          </>
+        )
       ) : (
         // Out-of-game Dashboard States
         <>

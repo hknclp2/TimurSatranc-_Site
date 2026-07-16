@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useUnityContext } from "react-unity-webgl";
 
 // Authentic Timur Chess moves list for demo simulation
@@ -43,13 +43,13 @@ export function useUnityBridge() {
     isLoaded
   } = unityContext;
 
-  // Detect if we can load the real Unity build (usually in window.createUnityInstance or check if loader is available)
-  // For the sake of safety and previewing, we default to Demo mode if files are not loaded or if loading fails
+  // Detect if we can load the real Unity build by checking if the loader file exists
+  // AND is not the SPA fallback HTML (Vite returns 200 OK + text/html for missing files).
   useEffect(() => {
-    // Check if loaderUrl is reachable, if not, we stick to demo simulation.
     fetch("/unity/Build.loader.js", { method: "HEAD" })
       .then((res) => {
-        if (res.ok) {
+        const contentType = res.headers.get("content-type") || "";
+        if (res.ok && !contentType.includes("text/html")) {
           setIsDemoMode(false);
         } else {
           setIsDemoMode(true);
@@ -60,21 +60,25 @@ export function useUnityBridge() {
       });
   }, []);
 
-  // Demo progress simulation
+  // Demo progress simulation — use a ref flag to avoid setState-in-effect lint warning
+  const demoRunningRef = useRef(false);
   useEffect(() => {
-    if (isUnityActive && isDemoMode && !demoLoaded) {
-      setDemoProgress(0);
+    if (isUnityActive && isDemoMode && !demoLoaded && !demoRunningRef.current) {
+      demoRunningRef.current = true;
+      let progress = 0;
       const interval = setInterval(() => {
-        setDemoProgress((prev) => {
-          if (prev >= 100) {
-            clearInterval(interval);
-            setDemoLoaded(true);
-            return 100;
-          }
-          return prev + Math.floor(Math.random() * 15) + 5;
-        });
+        progress = Math.min(progress + Math.floor(Math.random() * 15) + 5, 100);
+        setDemoProgress(progress);
+        if (progress >= 100) {
+          clearInterval(interval);
+          setDemoLoaded(true);
+          demoRunningRef.current = false;
+        }
       }, 200);
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        demoRunningRef.current = false;
+      };
     }
   }, [isUnityActive, isDemoMode, demoLoaded]);
 

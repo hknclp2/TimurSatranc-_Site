@@ -1,4 +1,4 @@
-import React from "react";
+// No React hooks needed in Sidebar — JSX transform is automatic via Vite
 import logoImg from "../assets/logo.png";
 
 export function Sidebar({ activeTab, setActiveTab, isUnityActive, exitGame, resetGame, toggleGuide, isGuideOpen }) {
