@@ -33,28 +33,28 @@ import bPiyon from "../assets/pieces/s_piyon.png";
 ════════════════════════════════════════════════════════ */
 const PIECE_IMAGES = {
   white: {
-    SAH:      wSah,
-    VEZIR:    wVezir,
-    FERS:     wFers,
-    FIL:      wFil,
-    DEVE:     wDeve,
+    SAH: wSah,
+    VEZIR: wVezir,
+    FERS: wFers,
+    FIL: wFil,
+    DEVE: wDeve,
     MANCINIK: wMancinik,
-    KALE:     wKale,
-    AT:       wAt,
-    ZURAFA:   wZurafa,
-    PIYON:    wPiyon,
+    KALE: wKale,
+    AT: wAt,
+    ZURAFA: wZurafa,
+    PIYON: wPiyon,
   },
   black: {
-    SAH:      bSah,
-    VEZIR:    bVezir,
-    FERS:     bFers,
-    FIL:      bFil,
-    DEVE:     bDeve,
+    SAH: bSah,
+    VEZIR: bVezir,
+    FERS: bFers,
+    FIL: bFil,
+    DEVE: bDeve,
     MANCINIK: bMancinik,
-    KALE:     bKale,
-    AT:       bAt,
-    ZURAFA:   bZurafa,
-    PIYON:    bPiyon,
+    KALE: bKale,
+    AT: bAt,
+    ZURAFA: bZurafa,
+    PIYON: bPiyon,
   },
 };
 
@@ -66,8 +66,8 @@ const TYPE_TO_KEY = {
 };
 
 const PIECE_ABBR = {
-  Ş:"Şh", V:"Vz", Fe:"Fe", F:"Fl",
-  D:"Dv", M:"Mc", K:"Kl", A:"At", Z:"Zr", P:"P",
+  Ş: "Şh", V: "Vz", Fe: "Fe", F: "Fl",
+  D: "Dv", M: "Mc", K: "Kl", A: "At", Z: "Zr", P: "P",
 };
 
 /* ════════════════════════════════════════════════════════
@@ -76,78 +76,78 @@ const PIECE_ABBR = {
 function buildInitialBoard() {
   const E = null;
   const b = (t, n) => ({ type: t, name: n, isWhite: false });
-  const w = (t, n) => ({ type: t, name: n, isWhite: true  });
+  const w = (t, n) => ({ type: t, name: n, isWhite: true });
   return [
-    [b("F","Fil"),E,b("D","Deve"),E,b("M","Mancınık"),E,b("M","Mancınık"),E,b("D","Deve"),E,b("F","Fil")],
-    [b("K","Kale"),b("A","At"),b("F","Fil"),b("Z","Zürafa"),b("V","Vezir"),b("Ş","Şah"),b("Fe","Fers"),b("Z","Zürafa"),b("F","Fil"),b("A","At"),b("K","Kale")],
-    [b("P","P"),b("P","P"),b("P","P"),b("P","P"),b("P","P"),b("P","P"),b("P","P"),b("P","P"),b("P","P"),b("P","P"),b("P","P")],
-    [E,E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E,E],
-    [E,E,E,E,E,E,E,E,E,E,E],
-    [w("P","P"),w("P","P"),w("P","P"),w("P","P"),w("P","P"),w("P","P"),w("P","P"),w("P","P"),w("P","P"),w("P","P"),w("P","P")],
-    [w("K","Kale"),w("A","At"),w("F","Fil"),w("Z","Zürafa"),w("V","Vezir"),w("Ş","Şah"),w("Fe","Fers"),w("Z","Zürafa"),w("F","Fil"),w("A","At"),w("K","Kale")],
-    [w("F","Fil"),E,w("D","Deve"),E,w("M","Mancınık"),E,w("M","Mancınık"),E,w("D","Deve"),E,w("F","Fil")],
+    [b("F", "Fil"), E, b("D", "Deve"), E, b("M", "Mancınık"), E, b("M", "Mancınık"), E, b("D", "Deve"), E, b("F", "Fil")],
+    [b("K", "Kale"), b("A", "At"), b("F", "Fil"), b("Z", "Zürafa"), b("V", "Vezir"), b("Ş", "Şah"), b("Fe", "Fers"), b("Z", "Zürafa"), b("F", "Fil"), b("A", "At"), b("K", "Kale")],
+    [b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P"), b("P", "P")],
+    [E, E, E, E, E, E, E, E, E, E, E],
+    [E, E, E, E, E, E, E, E, E, E, E],
+    [E, E, E, E, E, E, E, E, E, E, E],
+    [E, E, E, E, E, E, E, E, E, E, E],
+    [w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P"), w("P", "P")],
+    [w("K", "Kale"), w("A", "At"), w("F", "Fil"), w("Z", "Zürafa"), w("V", "Vezir"), w("Ş", "Şah"), w("Fe", "Fers"), w("Z", "Zürafa"), w("F", "Fil"), w("A", "At"), w("K", "Kale")],
+    [w("F", "Fil"), E, w("D", "Deve"), E, w("M", "Mancınık"), E, w("M", "Mancınık"), E, w("D", "Deve"), E, w("F", "Fil")],
   ];
 }
 
 /* ════════════════════════════════════════════════════════
    HAREKET MOTORU
 ════════════════════════════════════════════════════════ */
-const inB = (r,c) => r>=0&&r<10&&c>=0&&c<11;
+const inB = (r, c) => r >= 0 && r < 10 && c >= 0 && c < 11;
 
-function slideMoves(board,row,col,dirs) {
-  const p=board[row][col], moves=[];
-  for(const[dr,dc]of dirs){
-    let r=row+dr,c=col+dc;
-    while(inB(r,c)){
-      const t=board[r][c];
-      if(!t) moves.push([r,c]);
-      else { if(t.isWhite!==p.isWhite) moves.push([r,c]); break; }
-      r+=dr; c+=dc;
+function slideMoves(board, row, col, dirs) {
+  const p = board[row][col], moves = [];
+  for (const [dr, dc] of dirs) {
+    let r = row + dr, c = col + dc;
+    while (inB(r, c)) {
+      const t = board[r][c];
+      if (!t) moves.push([r, c]);
+      else { if (t.isWhite !== p.isWhite) moves.push([r, c]); break; }
+      r += dr; c += dc;
     }
   }
   return moves;
 }
 
-function jumpMoves(board,row,col,offsets) {
-  const p=board[row][col], moves=[];
-  for(const[dr,dc]of offsets){
-    const r=row+dr,c=col+dc;
-    if(!inB(r,c)) continue;
-    const t=board[r][c];
-    if(!t||t.isWhite!==p.isWhite) moves.push([r,c]);
+function jumpMoves(board, row, col, offsets) {
+  const p = board[row][col], moves = [];
+  for (const [dr, dc] of offsets) {
+    const r = row + dr, c = col + dc;
+    if (!inB(r, c)) continue;
+    const t = board[r][c];
+    if (!t || t.isWhite !== p.isWhite) moves.push([r, c]);
   }
   return moves;
 }
 
-function getValidMoves(board,row,col) {
-  const p=board[row][col];
-  if(!p) return [];
-  const{type,isWhite}=p;
-  switch(type){
-    case"Ş": return jumpMoves(board,row,col,[[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]);
-    case"V":
-    case"Fe": return jumpMoves(board,row,col,[[-1,-1],[-1,1],[1,-1],[1,1]]);
-    case"K": return slideMoves(board,row,col,[[-1,0],[1,0],[0,-1],[0,1]]);
-    case"A": return jumpMoves(board,row,col,[[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]]);
-    case"F": return jumpMoves(board,row,col,[[-2,-2],[-2,2],[2,-2],[2,2]]);
-    case"D": return jumpMoves(board,row,col,[[-3,-1],[-3,1],[3,-1],[3,1],[-1,-3],[-1,3],[1,-3],[1,3]]);
-    case"M": return jumpMoves(board,row,col,[[-2,0],[2,0],[0,-2],[0,2]]);
-    case"Z":{
-      const moves=[];
-      for(const[dr,dc]of[[-1,-1],[-1,1],[1,-1],[1,1]]){
-        const sr=row+dr,sc=col+dc;
-        if(!inB(sr,sc)) continue;
-        for(let n=3;n<=9;n++){const nr=sr+(dr<0?-n:n),nc=sc;if(!inB(nr,nc))break;const t=board[nr][nc];if(!t||t.isWhite!==isWhite)moves.push([nr,nc]);if(t)break;}
-        for(let n=3;n<=9;n++){const nr=sr,nc=sc+(dc<0?-n:n);if(!inB(nr,nc))break;const t=board[nr][nc];if(!t||t.isWhite!==isWhite)moves.push([nr,nc]);if(t)break;}
+function getValidMoves(board, row, col) {
+  const p = board[row][col];
+  if (!p) return [];
+  const { type, isWhite } = p;
+  switch (type) {
+    case "Ş": return jumpMoves(board, row, col, [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]);
+    case "V":
+    case "Fe": return jumpMoves(board, row, col, [[-1, -1], [-1, 1], [1, -1], [1, 1]]);
+    case "K": return slideMoves(board, row, col, [[-1, 0], [1, 0], [0, -1], [0, 1]]);
+    case "A": return jumpMoves(board, row, col, [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]]);
+    case "F": return jumpMoves(board, row, col, [[-2, -2], [-2, 2], [2, -2], [2, 2]]);
+    case "D": return jumpMoves(board, row, col, [[-3, -1], [-3, 1], [3, -1], [3, 1], [-1, -3], [-1, 3], [1, -3], [1, 3]]);
+    case "M": return jumpMoves(board, row, col, [[-2, 0], [2, 0], [0, -2], [0, 2]]);
+    case "Z": {
+      const moves = [];
+      for (const [dr, dc] of [[-1, -1], [-1, 1], [1, -1], [1, 1]]) {
+        const sr = row + dr, sc = col + dc;
+        if (!inB(sr, sc)) continue;
+        for (let n = 3; n <= 9; n++) { const nr = sr + (dr < 0 ? -n : n), nc = sc; if (!inB(nr, nc)) break; const t = board[nr][nc]; if (!t || t.isWhite !== isWhite) moves.push([nr, nc]); if (t) break; }
+        for (let n = 3; n <= 9; n++) { const nr = sr, nc = sc + (dc < 0 ? -n : n); if (!inB(nr, nc)) break; const t = board[nr][nc]; if (!t || t.isWhite !== isWhite) moves.push([nr, nc]); if (t) break; }
       }
       return moves;
     }
-    case"P":{
-      const dir=isWhite?-1:1,moves=[],nr=row+dir;
-      if(inB(nr,col)&&!board[nr][col]) moves.push([nr,col]);
-      for(const dc of[-1,1]){const nc=col+dc;if(inB(nr,nc)&&board[nr][nc]&&board[nr][nc].isWhite!==isWhite)moves.push([nr,nc]);}
+    case "P": {
+      const dir = isWhite ? -1 : 1, moves = [], nr = row + dir;
+      if (inB(nr, col) && !board[nr][col]) moves.push([nr, col]);
+      for (const dc of [-1, 1]) { const nc = col + dc; if (inB(nr, nc) && board[nr][nc] && board[nr][nc].isWhite !== isWhite) moves.push([nr, nc]); }
       return moves;
     }
     default: return [];
@@ -174,49 +174,49 @@ function useChessClock(initialSec, isActive, onTimeout) {
       setRemaining(initialSec);
     }
 
-    if(isActive){
-      ivRef.current=setInterval(()=>{
-        setRemaining(p=>{
-          if(p<=1){clearInterval(ivRef.current);setTimeout(()=>cbRef.current(),0);return 0;}
-          return p-1;
+    if (isActive) {
+      ivRef.current = setInterval(() => {
+        setRemaining(p => {
+          if (p <= 1) { clearInterval(ivRef.current); setTimeout(() => cbRef.current(), 0); return 0; }
+          return p - 1;
         });
-      },1000);
+      }, 1000);
     } else clearInterval(ivRef.current);
-    return ()=>clearInterval(ivRef.current);
-  },[isActive, initialSec]);
+    return () => clearInterval(ivRef.current);
+  }, [isActive, initialSec]);
   return remaining;
 }
 
 const fmt = s => {
-  if(s===null) return "∞";
-  const m=Math.floor(s/60), sec=s%60;
-  return `${String(m).padStart(2,"0")}:${String(sec).padStart(2,"0")}`;
+  if (s === null) return "∞";
+  const m = Math.floor(s / 60), sec = s % 60;
+  return `${String(m).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 };
 
 /* ════════════════════════════════════════════════════════
    TAŞI RENDER ET — PNG varsa göster, yoksa SVG fallback
 ════════════════════════════════════════════════════════ */
 const SVG_PIECES = {
-  SAH: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M9 36L36 36L33 21L28 27L22.5 15L17 27L12 21Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M22.5 9L22.5 15M19.5 12L25.5 12" stroke="${stroke}" stroke-width="1.8" fill="none"/></svg>`,
-  VEZIR: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M12 36L33 36L30 21L25 26L22.5 15L20 26L15 21Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
-  FERS: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M15 36L30 36L27 24L22.5 18L18 24Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="22.5" cy="13" r="3" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
-  KALE: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M9 39L36 39L36 33L33 30L33 18L36 15L36 9L31 9L31 13L26 13L26 9L19 9L19 13L14 13L14 9L9 9L9 15L12 18L12 30L9 33Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
-  AT: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M33 28.5C33 28.5 36 25.5 34.5 19.5C33 13.5 27 10.5 24 10.5C21 10.5 15 13.5 15 19.5C15 22.5 16.5 24 16.5 24C16.5 24 13.5 25.5 13.5 30C13.5 34.5 19.5 37.5 22.5 37.5C25.5 37.5 31.5 36 33 28.5Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="25.5" cy="16.5" r="1.5" fill="${stroke}"/></svg>`,
-  FIL: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M12 33C12 21 16 15 22.5 15C29 15 33 21 33 33C33 36 29 39 22.5 39C16 39 12 36 12 33Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M16 27C12 27 9 29 9 33C9 36 12 38 15 38" fill="none" stroke="${stroke}" stroke-width="1.8"/><circle cx="21" cy="21" r="2.5" fill="${stroke}"/></svg>`,
-  DEVE: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M12 30C12 21 16 18 19 21C22 24 25 18 29 21C33 24 33 30 33 33L12 33Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M29 24L34 16L38 18" fill="none" stroke="${stroke}" stroke-width="1.8" stroke-linecap="round"/></svg>`,
-  MANCINIK: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M10 33L35 33L32 24L13 24Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="16" cy="35" r="4" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="29" cy="35" r="4" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M22 27L33 13" fill="none" stroke="${stroke}" stroke-width="1.8"/></svg>`,
-  ZURAFA: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M15 30L27 30L27 36L15 36Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M24 30L24 12C24 12 25 9 28 9" fill="none" stroke="${stroke}" stroke-width="1.8" stroke-linecap="round"/><circle cx="27" cy="13" r="1.5" fill="${stroke}"/></svg>`,
-  PIYON: (fill,stroke) => `<svg viewBox="0 0 45 45"><path d="M22.5 9C16 9 12 13 12 18c0 3 1 5 3 6v3c0 2 2 4 4 5l1 6h5l1-6c2-1 4-3 4-5v-3c2-1 3-3 3-6 0-5-4-9-10.5-9Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="28" cy="27" r="6" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
+  SAH: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M9 36L36 36L33 21L28 27L22.5 15L17 27L12 21Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M22.5 9L22.5 15M19.5 12L25.5 12" stroke="${stroke}" stroke-width="1.8" fill="none"/></svg>`,
+  VEZIR: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M12 36L33 36L30 21L25 26L22.5 15L20 26L15 21Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
+  FERS: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M15 36L30 36L27 24L22.5 18L18 24Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="22.5" cy="13" r="3" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
+  KALE: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M9 39L36 39L36 33L33 30L33 18L36 15L36 9L31 9L31 13L26 13L26 9L19 9L19 13L14 13L14 9L9 9L9 15L12 18L12 30L9 33Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
+  AT: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M33 28.5C33 28.5 36 25.5 34.5 19.5C33 13.5 27 10.5 24 10.5C21 10.5 15 13.5 15 19.5C15 22.5 16.5 24 16.5 24C16.5 24 13.5 25.5 13.5 30C13.5 34.5 19.5 37.5 22.5 37.5C25.5 37.5 31.5 36 33 28.5Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="25.5" cy="16.5" r="1.5" fill="${stroke}"/></svg>`,
+  FIL: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M12 33C12 21 16 15 22.5 15C29 15 33 21 33 33C33 36 29 39 22.5 39C16 39 12 36 12 33Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M16 27C12 27 9 29 9 33C9 36 12 38 15 38" fill="none" stroke="${stroke}" stroke-width="1.8"/><circle cx="21" cy="21" r="2.5" fill="${stroke}"/></svg>`,
+  DEVE: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M12 30C12 21 16 18 19 21C22 24 25 18 29 21C33 24 33 30 33 33L12 33Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M29 24L34 16L38 18" fill="none" stroke="${stroke}" stroke-width="1.8" stroke-linecap="round"/></svg>`,
+  MANCINIK: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M10 33L35 33L32 24L13 24Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="16" cy="35" r="4" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="29" cy="35" r="4" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M22 27L33 13" fill="none" stroke="${stroke}" stroke-width="1.8"/></svg>`,
+  ZURAFA: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M15 30L27 30L27 36L15 36Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><path d="M24 30L24 12C24 12 25 9 28 9" fill="none" stroke="${stroke}" stroke-width="1.8" stroke-linecap="round"/><circle cx="27" cy="13" r="1.5" fill="${stroke}"/></svg>`,
+  PIYON: (fill, stroke) => `<svg viewBox="0 0 45 45"><path d="M22.5 9C16 9 12 13 12 18c0 3 1 5 3 6v3c0 2 2 4 4 5l1 6h5l1-6c2-1 4-3 4-5v-3c2-1 3-3 3-6 0-5-4-9-10.5-9Z" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/><circle cx="28" cy="27" r="6" fill="${fill}" stroke="${stroke}" stroke-width="1.8"/></svg>`,
 };
 
 function PieceImg({ piece }) {
   const color = piece.isWhite ? "white" : "black";
-  const key   = TYPE_TO_KEY[piece.type];
-  const src   = PIECE_IMAGES[color]?.[key];
+  const key = TYPE_TO_KEY[piece.type];
+  const src = PIECE_IMAGES[color]?.[key];
   const [imgFailed, setImgFailed] = React.useState(false);
 
   // PNG varsa göster
-  if(src && !imgFailed) {
+  if (src && !imgFailed) {
     return (
       <img
         src={src}
@@ -229,10 +229,10 @@ function PieceImg({ piece }) {
   }
 
   // SVG fallback
-  const wFill   = piece.isWhite ? "#ffffff" : "#1a0a00";
+  const wFill = piece.isWhite ? "#ffffff" : "#1a0a00";
   const wStroke = piece.isWhite ? "#2d1200" : "#f5e8d0";
-  const svgFn   = SVG_PIECES[key];
-  if(!svgFn) return null;
+  const svgFn = SVG_PIECES[key];
+  if (!svgFn) return null;
   return (
     <div
       className="w-full h-full select-none pointer-events-none"
@@ -243,9 +243,9 @@ function PieceImg({ piece }) {
 
 function CapturedPieceImg({ type, isWhite }) {
   const color = isWhite ? "white" : "black";
-  const key   = TYPE_TO_KEY[type];
-  const src   = PIECE_IMAGES[color]?.[key];
-  
+  const key = TYPE_TO_KEY[type];
+  const src = PIECE_IMAGES[color]?.[key];
+
   if (src) {
     return (
       <img
@@ -264,10 +264,10 @@ function CapturedPieceImg({ type, isWhite }) {
    KURULUM EKRANI
 ════════════════════════════════════════════════════════ */
 const TIME_OPTIONS = [
-  { label: "5 Dakika",  value: 300  },
-  { label: "10 Dakika", value: 600  },
+  { label: "5 Dakika", value: 300 },
+  { label: "10 Dakika", value: 600 },
   { label: "20 Dakika", value: 1200 },
-  { label: "Sınırsız",  value: null },
+  { label: "Sınırsız", value: null },
 ];
 
 function SetupScreen({ onStart, onBack, defaultTime }) {
@@ -284,7 +284,7 @@ function SetupScreen({ onStart, onBack, defaultTime }) {
           className="absolute left-4 top-4 z-20 w-10 h-10 flex items-center justify-center text-white/60 hover:text-white active:scale-90 transition-all"
           aria-label="Geri"
         >
-          <ArrowLeft size={22} strokeWidth={2.5}/>
+          <ArrowLeft size={22} strokeWidth={2.5} />
         </button>
       )}
 
@@ -312,9 +312,9 @@ function SetupScreen({ onStart, onBack, defaultTime }) {
 
         {/* Dekoratif çizgi */}
         <div className="flex items-center gap-3 w-full">
-          <div className="flex-1 h-px bg-[#d4af37]/20"/>
-          <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37]/30"/>
-          <div className="flex-1 h-px bg-[#d4af37]/20"/>
+          <div className="flex-1 h-px bg-[#d4af37]/20" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#d4af37]/30" />
+          <div className="flex-1 h-px bg-[#d4af37]/20" />
         </div>
 
         {/* Oyuncu İsimleri */}
@@ -356,9 +356,9 @@ function SetupScreen({ onStart, onBack, defaultTime }) {
 
         {/* Dekoratif çizgi */}
         <div className="flex items-center gap-3 w-full">
-          <div className="flex-1 h-px bg-[#d4af37]/10"/>
+          <div className="flex-1 h-px bg-[#d4af37]/10" />
           <span className="text-[9px] text-[#4a6a54] font-bold tracking-widest uppercase">Zaman Kontrolü</span>
-          <div className="flex-1 h-px bg-[#d4af37]/10"/>
+          <div className="flex-1 h-px bg-[#d4af37]/10" />
         </div>
 
         {/* Zaman Seçimi */}
@@ -369,11 +369,10 @@ function SetupScreen({ onStart, onBack, defaultTime }) {
               <button
                 key={opt.label}
                 onClick={() => setTimeValue(opt.value)}
-                className={`py-4 rounded-2xl font-bold text-sm transition-all active:scale-95 ${
-                  active
+                className={`py-4 rounded-2xl font-bold text-sm transition-all active:scale-95 ${active
                     ? "bg-[#d4af37] text-[#0d1f14]"
                     : "bg-[#0a1a0e] border border-white/20 text-[#8ba898]"
-                }`}
+                  }`}
               >
                 <span className="font-batangas text-base">
                   {opt.value ? `⏱ ${opt.label}` : `∞ ${opt.label}`}
@@ -394,7 +393,7 @@ function SetupScreen({ onStart, onBack, defaultTime }) {
 
         {/* Başlat Butonu */}
         <button
-          onClick={() => onStart({ whiteName: whiteName||"Beyaz", blackName: blackName||"Siyah", timeSeconds: timeValue })}
+          onClick={() => onStart({ whiteName: whiteName || "Beyaz", blackName: blackName || "Siyah", timeSeconds: timeValue })}
           className="w-full py-5 rounded-2xl font-batangas text-xl font-bold text-[#0d1f14] transition-all active:scale-95"
           style={{ backgroundColor: "#d4af37" }}
         >
@@ -414,17 +413,17 @@ function SetupScreen({ onStart, onBack, defaultTime }) {
 /* ════════════════════════════════════════════════════════
    OYUN EKRANI
 ════════════════════════════════════════════════════════ */
-function GameScreen({ config, onBack, showNotification }) {
+function GameScreen({ config, onBack, showNotification, vsBot }) {
   const { whiteName, blackName, timeSeconds } = config;
 
   const [boardHistory, setBoardHistory] = useState(() => [buildInitialBoard()]);
-  const [currentStep,  setCurrentStep]  = useState(0);
-  const [selected,     setSelected]     = useState(null);
-  const [validMoves,   setValidMoves]   = useState([]);
-  const [isWhiteTurn,  setIsWhiteTurn]  = useState(true);
-  const [moveHistory,  setMoveHistory]  = useState([]);
-  const [gameOver,     setGameOver]     = useState(null);
-  const [showHistPanel,setShowHistPanel]= useState(false);
+  const [currentStep, setCurrentStep] = useState(0);
+  const [selected, setSelected] = useState(null);
+  const [validMoves, setValidMoves] = useState([]);
+  const [isWhiteTurn, setIsWhiteTurn] = useState(true);
+  const [moveHistory, setMoveHistory] = useState([]);
+  const [gameOver, setGameOver] = useState(null);
+  const [showHistPanel, setShowHistPanel] = useState(false);
 
   const histRef = useRef(null);
 
@@ -432,41 +431,41 @@ function GameScreen({ config, onBack, showNotification }) {
   const isLive = currentStep === boardHistory.length - 1;
 
   /* saatler */
-  const wTimeout = useCallback(()=>setGameOver({winner:"black",reason:"zaman"}), []);
-  const bTimeout = useCallback(()=>setGameOver({winner:"white",reason:"zaman"}), []);
-  const whiteTime = useChessClock(timeSeconds??99999, isLive && !gameOver && isWhiteTurn,  wTimeout);
-  const blackTime = useChessClock(timeSeconds??99999, isLive && !gameOver && !isWhiteTurn, bTimeout);
+  const wTimeout = useCallback(() => setGameOver({ winner: "black", reason: "zaman" }), []);
+  const bTimeout = useCallback(() => setGameOver({ winner: "white", reason: "zaman" }), []);
+  const whiteTime = useChessClock(timeSeconds ?? 99999, isLive && !gameOver && isWhiteTurn, wTimeout);
+  const blackTime = useChessClock(timeSeconds ?? 99999, isLive && !gameOver && !isWhiteTurn, bTimeout);
 
-  useEffect(()=>{ if(histRef.current) histRef.current.scrollTop=histRef.current.scrollHeight; },[moveHistory]);
+  useEffect(() => { if (histRef.current) histRef.current.scrollTop = histRef.current.scrollHeight; }, [moveHistory]);
 
   /* tıklama */
-  function handleClick(row,col) {
-    if(gameOver) return;
-    if(!isLive) {
+  function handleClick(row, col) {
+    if (gameOver) return;
+    if (!isLive) {
       showNotification && showNotification("Geçmiş hamleleri incelerken yeni hamle yapamazsınız. Canlı oyuna dönmek için 'İleri' butonunu kullanın.", "info");
       return;
     }
     const clicked = board[row][col];
 
-    if(selected) {
-      const [sr,sc] = selected;
-      const valid = validMoves.some(([r,c])=>r===row&&c===col);
-      if(valid) { applyMove(sr,sc,row,col); return; }
-      if(clicked&&clicked.isWhite===isWhiteTurn) {
-        setSelected([row,col]); setValidMoves(getValidMoves(board,row,col)); return;
+    if (selected) {
+      const [sr, sc] = selected;
+      const valid = validMoves.some(([r, c]) => r === row && c === col);
+      if (valid) { applyMove(sr, sc, row, col); return; }
+      if (clicked && clicked.isWhite === isWhiteTurn) {
+        setSelected([row, col]); setValidMoves(getValidMoves(board, row, col)); return;
       }
       setSelected(null); setValidMoves([]); return;
     }
-    if(clicked&&clicked.isWhite===isWhiteTurn) {
-      setSelected([row,col]); setValidMoves(getValidMoves(board,row,col));
+    if (clicked && clicked.isWhite === isWhiteTurn) {
+      setSelected([row, col]); setValidMoves(getValidMoves(board, row, col));
     }
   }
 
-  function applyMove(fr,fc,tr,tc) {
+  const applyMove = useCallback((fr, fc, tr, tc) => {
     const currentBoard = boardHistory[currentStep];
-    const nb = currentBoard.map(r=>[...r]);
-    const piece=nb[fr][fc], cap=nb[tr][tc];
-    nb[tr][tc]=piece; nb[fr][fc]=null;
+    const nb = currentBoard.map(r => [...r]);
+    const piece = nb[fr][fc], cap = nb[tr][tc];
+    nb[tr][tc] = piece; nb[fr][fc] = null;
 
     let notation;
     const fcLetter = String.fromCharCode(97 + fc);
@@ -500,13 +499,13 @@ function GameScreen({ config, onBack, showNotification }) {
 
     const nextBoardHistory = [...boardHistory.slice(0, currentStep + 1), nb];
 
-    if(cap&&cap.type==="Ş") {
+    if (cap && cap.type === "Ş") {
       setBoardHistory(nextBoardHistory);
       setMoveHistory(hist);
       setCurrentStep(nextBoardHistory.length - 1);
       setSelected(null);
       setValidMoves([]);
-      setGameOver({winner:isWhiteTurn?"white":"black",reason:"mat"});
+      setGameOver({ winner: isWhiteTurn ? "white" : "black", reason: "mat" });
       return;
     }
     setBoardHistory(nextBoardHistory);
@@ -514,8 +513,8 @@ function GameScreen({ config, onBack, showNotification }) {
     setCurrentStep(nextBoardHistory.length - 1);
     setSelected(null);
     setValidMoves([]);
-    setIsWhiteTurn(p=>!p);
-  }
+    setIsWhiteTurn(p => !p);
+  }, [boardHistory, currentStep, moveHistory, isWhiteTurn]);
 
   function reset() {
     setBoardHistory([buildInitialBoard()]);
@@ -547,43 +546,97 @@ function GameScreen({ config, onBack, showNotification }) {
   const canGoBack = currentStep > 0;
   const canGoForward = currentStep < boardHistory.length - 1;
 
-  const isValidSq  = (r,c)=>validMoves.some(([vr,vc])=>vr===r&&vc===c);
-  const isSelSq    = (r,c)=>selected&&selected[0]===r&&selected[1]===c;
-  const notationStr= moveHistory.map((m,i)=>{
-    const prefix = m.isWhite ? `${Math.floor(i/2)+1}. ` : "";
-    return prefix+m.notation;
+  const isValidSq = (r, c) => validMoves.some(([vr, vc]) => vr === r && vc === c);
+  const isSelSq = (r, c) => selected && selected[0] === r && selected[1] === c;
+  const notationStr = moveHistory.map((m, i) => {
+    const prefix = m.isWhite ? `${Math.floor(i / 2) + 1}. ` : "";
+    return prefix + m.notation;
   }).join(" ");
 
+  // AI/Bot turn handler
+  useEffect(() => {
+    if (!vsBot || isWhiteTurn || gameOver || !isLive) return;
+
+    const timer = setTimeout(() => {
+      // Find all black pieces
+      const blackPieces = [];
+      board.forEach((row, ri) => {
+        row.forEach((piece, ci) => {
+          if (piece && !piece.isWhite) {
+            blackPieces.push({ r: ri, c: ci });
+          }
+        });
+      });
+
+      // Find all valid moves for each black piece
+      const allMoves = [];
+      blackPieces.forEach(({ r, c }) => {
+        const moves = getValidMoves(board, r, c);
+        moves.forEach(([tr, tc]) => {
+          const target = board[tr][tc];
+          allMoves.push({
+            from: [r, c],
+            to: [tr, tc],
+            yemeHamlesiMi: !!target,
+            target
+          });
+        });
+      });
+
+      if (allMoves.length === 0) {
+        setGameOver({ winner: "white", reason: "mat" });
+        return;
+      }
+
+      // Filter capturing moves
+      const capturingMoves = allMoves.filter(m => m.yemeHamlesiMi);
+
+      // Choose a move (prioritize capturing)
+      let selectedMove;
+      if (capturingMoves.length > 0) {
+        selectedMove = capturingMoves[Math.floor(Math.random() * capturingMoves.length)];
+      } else {
+        selectedMove = allMoves[Math.floor(Math.random() * allMoves.length)];
+      }
+
+      const [fr, fc] = selectedMove.from;
+      const [tr, tc] = selectedMove.to;
+      applyMove(fr, fc, tr, tc);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, [isWhiteTurn, board, gameOver, isLive, vsBot, applyMove]);
+
   /* ── OYUN SONU ── */
-  if(gameOver) {
-    const winName = gameOver.winner==="white" ? whiteName : blackName;
-    const loseName= gameOver.winner==="white" ? blackName  : whiteName;
+  if (gameOver) {
+    const winName = gameOver.winner === "white" ? whiteName : blackName;
+    const loseName = gameOver.winner === "white" ? blackName : whiteName;
     return (
       <div className="mobile-screen flex flex-col items-center justify-center bg-[#0d1f14] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.1)_0%,_transparent_70%)] pointer-events-none"/>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.1)_0%,_transparent_70%)] pointer-events-none" />
         <div className="flex flex-col items-center gap-5 px-8 text-center z-10 w-full max-w-xs">
           <div className="w-20 h-20 rounded-full bg-[#d4af37]/10 border-2 border-[#d4af37]/40 flex items-center justify-center text-4xl drop-shadow-[0_0_16px_rgba(212,175,55,0.4)]">
             👑
           </div>
           <div>
             <p className="text-[10px] font-bold tracking-widest text-[#d4af37] uppercase">
-              {gameOver.reason==="mat"?"Şah Mat!":gameOver.reason==="teslim"?`${loseName} Teslim Oldu`:"Zaman Doldu"}
+              {gameOver.reason === "mat" ? "Şah Mat!" : gameOver.reason === "teslim" ? `${loseName} Teslim Oldu` : "Zaman Doldu"}
             </p>
             <h2 className="font-batangas text-4xl font-bold text-white mt-1">{winName}</h2>
             <p className="text-[#8ba898] text-sm mt-1">zafere ulaştı</p>
           </div>
-          {moveHistory.length>0&&(
+          {moveHistory.length > 0 && (
             <div className="w-full bg-black/30 rounded-xl p-3 border border-[#d4af37]/10 text-left">
               <p className="text-[9px] text-[#d4af37] font-bold tracking-widest uppercase mb-2">Son 5 Hamle</p>
-              {moveHistory.slice(-5).map((m,i)=>(
-                <span key={i} className={`text-[10px] font-mono block ${m.isWhite?"text-white":"text-[#8ba898]"}`}>
-                  {m.isWhite?"⬜":"⬛"} {m.notation}
+              {moveHistory.slice(-5).map((m, i) => (
+                <span key={i} className={`text-[10px] font-mono block ${m.isWhite ? "text-white" : "text-[#8ba898]"}`}>
+                  {m.isWhite ? "⬜" : "⬛"} {m.notation}
                 </span>
               ))}
             </div>
           )}
           <div className="flex flex-col gap-2.5 w-full">
-            <button onClick={reset} className="w-full py-3.5 rounded-2xl font-batangas text-lg font-bold text-[#0d1f14]" style={{background:"linear-gradient(135deg,#d4af37,#f5d060,#c8960c)"}}>
+            <button onClick={reset} className="w-full py-3.5 rounded-2xl font-batangas text-lg font-bold text-[#0d1f14]" style={{ background: "linear-gradient(135deg,#d4af37,#f5d060,#c8960c)" }}>
               Tekrar Oyna
             </button>
             <button onClick={onBack} className="w-full bg-[#f5eedc] hover:bg-[#e6dcc5] text-[#141f1b] font-batangas text-lg font-bold py-3.5 rounded-2xl transition-all active:scale-95">
@@ -596,26 +649,26 @@ function GameScreen({ config, onBack, showNotification }) {
   }
 
   /* ── HAMİLE PANELİ ── */
-  if(showHistPanel) {
+  if (showHistPanel) {
     return (
       <div className="mobile-screen flex flex-col bg-[#0d1f14] relative">
         <div className="flex items-center gap-3 px-5 pt-9 pb-3 border-b border-white/10 shrink-0">
-          <button onClick={()=>setShowHistPanel(false)} className="mobile-back-btn">
-            <ArrowLeft size={26} strokeWidth={2.5}/>
+          <button onClick={() => setShowHistPanel(false)} className="mobile-back-btn">
+            <ArrowLeft size={26} strokeWidth={2.5} />
           </button>
           <h1 className="font-batangas text-2xl font-bold text-white">Hamle Geçmişi</h1>
           <span className="ml-auto text-xs text-[#8ba898] font-mono">{moveHistory.length} hamle</span>
         </div>
         <div ref={histRef} className="flex-1 overflow-y-auto px-5 py-4 custom-scrollbar">
-          {moveHistory.length===0 ? (
+          {moveHistory.length === 0 ? (
             <p className="text-[#8ba898] text-sm text-center mt-10">Henüz hamle yapılmadı.</p>
-          ):(
+          ) : (
             <div className="flex flex-col gap-2">
-              {moveHistory.map((m,i)=>(
-                <div key={i} className={`flex items-center gap-3 py-2.5 px-3 rounded-xl ${m.isWhite?"bg-white/5 border border-white/10":"bg-black/30 border border-white/5"}`}>
-                  <span className="text-[10px] text-[#8ba898] font-mono w-8 text-right shrink-0">{Math.floor(i/2)+1}{m.isWhite?".":".."}</span>
-                  <span className={`text-xs font-mono font-semibold flex-1 ${m.isWhite?"text-white":"text-[#8ba898]"}`}>{m.notation}</span>
-                  {m.captured&&<span className="text-[10px] text-red-400 font-bold bg-red-900/30 px-2 py-0.5 rounded-full shrink-0">×{m.captured}</span>}
+              {moveHistory.map((m, i) => (
+                <div key={i} className={`flex items-center gap-3 py-2.5 px-3 rounded-xl ${m.isWhite ? "bg-white/5 border border-white/10" : "bg-black/30 border border-white/5"}`}>
+                  <span className="text-[10px] text-[#8ba898] font-mono w-8 text-right shrink-0">{Math.floor(i / 2) + 1}{m.isWhite ? "." : ".."}</span>
+                  <span className={`text-xs font-mono font-semibold flex-1 ${m.isWhite ? "text-white" : "text-[#8ba898]"}`}>{m.notation}</span>
+                  {m.captured && <span className="text-[10px] text-red-400 font-bold bg-red-900/30 px-2 py-0.5 rounded-full shrink-0">×{m.captured}</span>}
                 </div>
               ))}
             </div>
@@ -641,7 +694,7 @@ function GameScreen({ config, onBack, showNotification }) {
           onClick={onBack}
           className="absolute left-3 w-8 h-8 flex items-center justify-center text-white/50 hover:text-white active:scale-90 transition-all"
         >
-          <ArrowLeft size={18} strokeWidth={2.5}/>
+          <ArrowLeft size={18} strokeWidth={2.5} />
         </button>
 
         {/* Başlık */}
@@ -682,11 +735,10 @@ function GameScreen({ config, onBack, showNotification }) {
         </div>
 
         {/* Siyah saati */}
-        <div className={`flex items-center gap-1 px-3 py-1 rounded-lg font-mono text-sm font-bold transition-all ${
-          !displayWhiteTurn
+        <div className={`flex items-center gap-1 px-3 py-1 rounded-lg font-mono text-sm font-bold transition-all ${!displayWhiteTurn
             ? "bg-white/90 text-[#111] shadow-[0_0_10px_rgba(255,255,255,0.2)]"
             : "bg-black/50 text-white/35 border border-white/10"
-        }`}>
+          }`}>
           {timeSeconds && (
             <img
               src={hourglassIcon}
@@ -694,7 +746,7 @@ function GameScreen({ config, onBack, showNotification }) {
               alt="zaman"
             />
           )}
-          <span>{fmt(blackTime===99999?null:blackTime)}</span>
+          <span>{fmt(blackTime === 99999 ? null : blackTime)}</span>
         </div>
       </div>
 
@@ -719,15 +771,15 @@ function GameScreen({ config, onBack, showNotification }) {
             row.map((piece, ci) => {
               /* Canva görseline birebir tahta renkleri */
               const isDark = (ri + ci) % 2 === 1;
-              const isSel  = isSelSq(ri, ci);
-              const isVal  = isValidSq(ri, ci);
-              const isCap  = isVal && piece && piece.isWhite !== isWhiteTurn;
+              const isSel = isSelSq(ri, ci);
+              const isVal = isValidSq(ri, ci);
+              const isCap = isVal && piece && piece.isWhite !== isWhiteTurn;
 
               // Renk öncelik sırası
               let bg = isDark ? "#7c5636" : "#c19975";
-              if(isSel)      bg = "#d4b840";
-              else if(isCap) bg = isDark ? "#993333" : "#cc6666";
-              else if(isVal) bg = isDark ? "#3d7a3d" : "#5fab5f";
+              if (isSel) bg = "#d4b840";
+              else if (isCap) bg = isDark ? "#993333" : "#cc6666";
+              else if (isVal) bg = isDark ? "#3d7a3d" : "#5fab5f";
 
               return (
                 <div
@@ -737,17 +789,17 @@ function GameScreen({ config, onBack, showNotification }) {
                   style={{ backgroundColor: bg }}
                 >
                   {/* Seçim çerçevesi */}
-                  {isSel && <div className="absolute inset-0 border-2 border-yellow-300/80 pointer-events-none z-10"/>}
+                  {isSel && <div className="absolute inset-0 border-2 border-yellow-300/80 pointer-events-none z-10" />}
                   {/* Yeme çerçevesi */}
-                  {isCap && <div className="absolute inset-0 border-[2px] border-red-400/80 pointer-events-none z-10"/>}
+                  {isCap && <div className="absolute inset-0 border-[2px] border-red-400/80 pointer-events-none z-10" />}
                   {/* Geçerli hamle noktası */}
                   {isVal && !piece && (
-                    <div className="absolute rounded-full bg-black/30 pointer-events-none z-10" style={{width:"32%",height:"32%"}}/>
+                    <div className="absolute rounded-full bg-black/30 pointer-events-none z-10" style={{ width: "32%", height: "32%" }} />
                   )}
                   {/* TAŞI RENDER ET */}
                   {piece && (
-                    <div className="absolute" style={{width:"88%",height:"88%",top:"6%",left:"6%",zIndex:5}}>
-                      <PieceImg piece={piece}/>
+                    <div className="absolute" style={{ width: "88%", height: "88%", top: "6%", left: "6%", zIndex: 5 }}>
+                      <PieceImg piece={piece} />
                     </div>
                   )}
                 </div>
@@ -778,11 +830,10 @@ function GameScreen({ config, onBack, showNotification }) {
         </div>
 
         {/* Beyaz saati */}
-        <div className={`flex items-center gap-1 px-3 py-1 rounded-lg font-mono text-sm font-bold transition-all ${
-          displayWhiteTurn
+        <div className={`flex items-center gap-1 px-3 py-1 rounded-lg font-mono text-sm font-bold transition-all ${displayWhiteTurn
             ? "bg-[#f5eedc] text-[#141f1b] shadow-[0_0_10px_rgba(245,238,220,0.3)]"
             : "bg-black/50 text-white/35 border border-white/10"
-        }`}>
+          }`}>
           {timeSeconds && (
             <img
               src={hourglassIcon}
@@ -790,7 +841,7 @@ function GameScreen({ config, onBack, showNotification }) {
               alt="zaman"
             />
           )}
-          <span>{fmt(whiteTime===99999?null:whiteTime)}</span>
+          <span>{fmt(whiteTime === 99999 ? null : whiteTime)}</span>
         </div>
       </div>
 
@@ -804,8 +855,8 @@ function GameScreen({ config, onBack, showNotification }) {
           onClick={() => setShowHistPanel(true)}
           className="flex flex-col items-center gap-1 text-[#141f1b] hover:opacity-80 active:scale-95 transition-all cursor-pointer"
         >
-          <List size={22} strokeWidth={2.5}/>
-          <span className="text-[10px] font-bold tracking-wide" style={{fontFamily:"var(--font-primary)"}}>
+          <List size={22} strokeWidth={2.5} />
+          <span className="text-[10px] font-bold tracking-wide" style={{ fontFamily: "var(--font-primary)" }}>
             Seçenekler
           </span>
         </button>
@@ -814,24 +865,22 @@ function GameScreen({ config, onBack, showNotification }) {
         <button
           onClick={handlePrevStep}
           disabled={!canGoBack}
-          className={`flex flex-col items-center gap-1 text-[#141f1b] active:scale-95 transition-all cursor-pointer ${
-            canGoBack ? "hover:opacity-80" : "opacity-30 cursor-not-allowed"
-          }`}
+          className={`flex flex-col items-center gap-1 text-[#141f1b] active:scale-95 transition-all cursor-pointer ${canGoBack ? "hover:opacity-80" : "opacity-30 cursor-not-allowed"
+            }`}
         >
-          <ChevronLeft size={26} strokeWidth={2.5}/>
-          <span className="text-[10px] font-bold tracking-wide" style={{fontFamily:"var(--font-primary)"}}>Geri</span>
+          <ChevronLeft size={26} strokeWidth={2.5} />
+          <span className="text-[10px] font-bold tracking-wide" style={{ fontFamily: "var(--font-primary)" }}>Geri</span>
         </button>
 
         {/* İleri */}
         <button
           onClick={handleNextStep}
           disabled={!canGoForward}
-          className={`flex flex-col items-center gap-1 text-[#141f1b] active:scale-95 transition-all cursor-pointer ${
-            canGoForward ? "hover:opacity-80" : "opacity-30 cursor-not-allowed"
-          }`}
+          className={`flex flex-col items-center gap-1 text-[#141f1b] active:scale-95 transition-all cursor-pointer ${canGoForward ? "hover:opacity-80" : "opacity-30 cursor-not-allowed"
+            }`}
         >
-          <ChevronRight size={26} strokeWidth={2.5}/>
-          <span className="text-[10px] font-bold tracking-wide" style={{fontFamily:"var(--font-primary)"}}>İleri</span>
+          <ChevronRight size={26} strokeWidth={2.5} />
+          <span className="text-[10px] font-bold tracking-wide" style={{ fontFamily: "var(--font-primary)" }}>İleri</span>
         </button>
       </div>
 
@@ -844,14 +893,14 @@ function GameScreen({ config, onBack, showNotification }) {
 ════════════════════════════════════════════════════════ */
 export function EkrandaOyna({ onBack, showNotification, initialTimeSeconds }) {
   const [gameState, setGameState] = useState("setup"); // "setup" | "playing"
-  const [config,    setConfig   ] = useState(null);
+  const [config, setConfig] = useState(null);
 
   function handleStart(cfg) {
     setConfig(cfg);
     setGameState("playing");
   }
 
-  if(gameState === "setup") {
+  if (gameState === "setup") {
     return (
       <SetupScreen
         onStart={handleStart}

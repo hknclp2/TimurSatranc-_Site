@@ -46,7 +46,7 @@ function App() {
   const showNotification = (message, type = "info") => {
     const id = Date.now();
     setNotifications((prev) => [...prev, { id, message, type }]);
-    
+
     setTimeout(() => {
       setNotifications((prev) => prev.filter((n) => n.id !== id));
     }, 3800);
@@ -56,11 +56,11 @@ function App() {
     startGame(mode);
     setIsGuideOpen(false);
     showNotification(
-      mode === "bot" 
-        ? "Yapay zeka (Bot) ile karşılaşma yükleniyor..." 
-        : mode === "online" 
-          ? "Oyuncu eşleştirme lobisine bağlanılıyor..." 
-          : "Yerel iki kişilik oyun modu başlatılıyor...", 
+      mode === "bot"
+        ? "Yapay zeka (Bot) ile karşılaşma yükleniyor..."
+        : mode === "online"
+          ? "Oyuncu eşleştirme lobisine bağlanılıyor..."
+          : "Yerel iki kişilik oyun modu başlatılıyor...",
       "info"
     );
   };
@@ -83,13 +83,12 @@ function App() {
           {notifications.map((notif) => (
             <div
               key={notif.id}
-              className={`pointer-events-auto p-4 rounded-2xl shadow-xl border backdrop-blur-md flex items-start gap-3 bg-[#0a2218]/95 animate-fade-in-up ${
-                notif.type === "success"
+              className={`pointer-events-auto p-4 rounded-2xl shadow-xl border backdrop-blur-md flex items-start gap-3 bg-[#0a2218]/95 animate-fade-in-up ${notif.type === "success"
                   ? "border-emerald-500/20 border-l-4 border-l-emerald-500 text-white"
                   : notif.type === "error"
                     ? "border-red-500/20 border-l-4 border-l-red-500 text-white"
                     : "border-accent-cyan/20 border-l-4 border-l-accent-cyan text-white"
-              }`}
+                }`}
             >
               {notif.type === "success" ? (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-emerald-400 shrink-0">
@@ -114,7 +113,7 @@ function App() {
 
   return (
     <div className="app-container min-h-screen w-full relative flex text-white font-primary overflow-hidden">
-      
+
       {/* SIDEBAR NAVIGATION */}
       <Sidebar
         activeTab={activeTab}
@@ -172,7 +171,7 @@ function App() {
             {/* Foreground UI Overlay Layer */}
             {isLoaded && (
               <div className="ui-overlay-layer fixed inset-0 w-full h-full pointer-events-none">
-                
+
                 {/* Top Status Header */}
                 <div className="absolute top-6 left-36 right-[336px] flex justify-between items-center bg-black/45 border border-white/5 py-3 px-6 rounded-2xl backdrop-blur-md interactive-overlay">
                   <div className="flex items-center gap-3">
@@ -180,12 +179,12 @@ function App() {
                       CANLI
                     </span>
                     <h2 className="font-serif text-sm font-semibold text-white tracking-wide">
-                      {gameMode === "bot" 
-                        ? "Zahir Yapay Zeka Karşılaşması" 
+                      {gameMode === "bot"
+                        ? "Zahir Yapay Zeka Karşılaşması"
                         : "Dereceli Çevrimiçi Maç"}
                     </h2>
                   </div>
-                  
+
                   {isDemoMode && (
                     <div className="text-[10px] text-amber-500 font-semibold bg-amber-500/10 px-3 py-1 rounded-md border border-amber-500/10">
                       Sanal Önizleme Aktif
@@ -347,13 +346,12 @@ function App() {
         {notifications.map((notif) => (
           <div
             key={notif.id}
-            className={`pointer-events-auto p-4 rounded-2xl shadow-xl border backdrop-blur-md transition-all duration-300 flex items-start gap-3 bg-[#0a2218]/95 animate-fade-in-up ${
-              notif.type === "success"
+            className={`pointer-events-auto p-4 rounded-2xl shadow-xl border backdrop-blur-md transition-all duration-300 flex items-start gap-3 bg-[#0a2218]/95 animate-fade-in-up ${notif.type === "success"
                 ? "border-emerald-500/20 border-l-4 border-l-emerald-500 text-white"
                 : notif.type === "error"
                   ? "border-red-500/20 border-l-4 border-l-red-500 text-white"
                   : "border-accent-cyan/20 border-l-4 border-l-accent-cyan text-white"
-            }`}
+              }`}
           >
             {/* Notification Icon */}
             {notif.type === "success" ? (

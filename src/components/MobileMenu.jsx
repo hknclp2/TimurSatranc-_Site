@@ -20,11 +20,10 @@ function CrownSelector({ value, onChange }) {
         <button
           key={n}
           onClick={() => onChange(n)}
-          className={`bg-[#387e5c] text-white py-1.5 px-3 rounded-lg flex items-center justify-center gap-0.5 cursor-pointer transition-all active:scale-95 ${
-            value === n
+          className={`bg-[#387e5c] text-white py-1.5 px-3 rounded-lg flex items-center justify-center gap-0.5 cursor-pointer transition-all active:scale-95 ${value === n
               ? "ring-2 ring-yellow-400 scale-105 shadow-md"
               : "opacity-55 hover:opacity-80"
-          }`}
+            }`}
         >
           {Array.from({ length: n }).map((_, i) => (
             <span key={i} className="text-yellow-400 text-xs">
@@ -51,15 +50,13 @@ function BotCard({
 }) {
   return (
     <div
-      className={`rounded-2xl overflow-hidden shadow-xl transition-all duration-300 ${
-        isExpanded ? "ring-2 ring-purple-400/70" : ""
-      }`}
+      className={`rounded-2xl overflow-hidden shadow-xl transition-all duration-300 ${isExpanded ? "ring-2 ring-purple-400/70" : ""
+        }`}
     >
       <button
         onClick={onToggle}
-        className={`bg-[#f5eedc] p-5 flex justify-between items-center w-full cursor-pointer transition-all duration-200 active:scale-[0.99] ${
-          isExpanded ? "" : "rounded-2xl"
-        }`}
+        className={`bg-[#f5eedc] p-5 flex justify-between items-center w-full cursor-pointer transition-all duration-200 active:scale-[0.99] ${isExpanded ? "" : "rounded-2xl"
+          }`}
       >
         <span className="font-batangas text-xl font-bold text-[#141f1b]">
           {label}
@@ -118,15 +115,15 @@ function MenuCard({ id, label, iconSrc, onClick }) {
 const INITIAL_BOARD = [
   // Row 0 (Black back rank 1)
   [
-    { type: "F", name: "Fil", isWhite: false }, null, { type: "D", name: "Deve", isWhite: false }, null, 
-    { type: "M", name: "Mancınık", isWhite: false }, null, { type: "M", name: "Mancınık", isWhite: false }, null, 
+    { type: "F", name: "Fil", isWhite: false }, null, { type: "D", name: "Deve", isWhite: false }, null,
+    { type: "M", name: "Mancınık", isWhite: false }, null, { type: "M", name: "Mancınık", isWhite: false }, null,
     { type: "D", name: "Deve", isWhite: false }, null, { type: "F", name: "Fil", isWhite: false }
   ],
   // Row 1 (Black back rank 2)
   [
-    { type: "K", name: "Kale", isWhite: false }, { type: "A", name: "At", isWhite: false }, { type: "F", name: "Fil", isWhite: false }, 
-    { type: "Z", name: "Zürafa", isWhite: false }, { type: "V", name: "Vezir", isWhite: false }, { type: "Ş", name: "Şah", isWhite: false }, 
-    { type: "Fe", name: "Fers", isWhite: false }, { type: "Z", name: "Zürafa", isWhite: false }, { type: "F", name: "Fil", isWhite: false }, 
+    { type: "K", name: "Kale", isWhite: false }, { type: "A", name: "At", isWhite: false }, { type: "F", name: "Fil", isWhite: false },
+    { type: "Z", name: "Zürafa", isWhite: false }, { type: "V", name: "Vezir", isWhite: false }, { type: "Ş", name: "Şah", isWhite: false },
+    { type: "Fe", name: "Fers", isWhite: false }, { type: "Z", name: "Zürafa", isWhite: false }, { type: "F", name: "Fil", isWhite: false },
     { type: "A", name: "At", isWhite: false }, { type: "K", name: "Kale", isWhite: false }
   ],
   // Row 2 (Black Pawns)
@@ -148,15 +145,15 @@ const INITIAL_BOARD = [
   ],
   // Row 8 (White back rank 2)
   [
-    { type: "K", name: "Kale", isWhite: true }, { type: "A", name: "At", isWhite: true }, { type: "F", name: "Fil", isWhite: true }, 
-    { type: "Z", name: "Zürafa", isWhite: true }, { type: "V", name: "Vezir", isWhite: true }, { type: "Ş", name: "Şah", isWhite: true }, 
-    { type: "Fe", name: "Fers", isWhite: true }, { type: "Z", name: "Zürafa", isWhite: true }, { type: "F", name: "Fil", isWhite: true }, 
+    { type: "K", name: "Kale", isWhite: true }, { type: "A", name: "At", isWhite: true }, { type: "F", name: "Fil", isWhite: true },
+    { type: "Z", name: "Zürafa", isWhite: true }, { type: "V", name: "Vezir", isWhite: true }, { type: "Ş", name: "Şah", isWhite: true },
+    { type: "Fe", name: "Fers", isWhite: true }, { type: "Z", name: "Zürafa", isWhite: true }, { type: "F", name: "Fil", isWhite: true },
     null, { type: "K", name: "Kale", isWhite: true }
   ],
   // Row 9 (White back rank 1)
   [
-    { type: "F", name: "Fil", isWhite: true }, null, { type: "D", name: "Deve", isWhite: true }, null, 
-    { type: "M", name: "Mancınık", isWhite: true }, null, { type: "M", name: "Mancınık", isWhite: true }, null, 
+    { type: "F", name: "Fil", isWhite: true }, null, { type: "D", name: "Deve", isWhite: true }, null,
+    { type: "M", name: "Mancınık", isWhite: true }, null, { type: "M", name: "Mancınık", isWhite: true }, null,
     { type: "D", name: "Deve", isWhite: true }, null, { type: "F", name: "Fil", isWhite: true }
   ]
 ];
@@ -167,102 +164,7 @@ INITIAL_BOARD[6][3] = { type: "P", name: "Piyade", isWhite: true };
 INITIAL_BOARD[8][9] = null;
 INITIAL_BOARD[6][8] = { type: "A", name: "At", isWhite: true };
 
-/* Custom SVG drawings for Timur chess pieces matching screenshot profiles */
-const PieceSvg = ({ type, isWhite }) => {
-  const fill = isWhite ? "#ffffff" : "#000000";
-  const stroke = isWhite ? "#000000" : "#ffffff";
-  const strokeWidth = "2.5";
 
-  switch (type) {
-    case "P": // Pawn with shield and helmet
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          {/* Helmet outline */}
-          <path d="M 22.5 9 C 16 9 12 13 12 18 C 12 21 13 23 15 24 L 15 27 C 15 29 17 31 19 32 L 20 38 L 25 38 L 26 32 C 28 31 30 29 30 27 L 30 24 C 32 23 33 21 33 18 C 33 13 29 9 22.5 9 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          {/* Shield */}
-          <circle cx="28" cy="27" r="8" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          <circle cx="28" cy="27" r="2.5" fill={stroke} />
-        </svg>
-      );
-    case "K": // Rook (Castle)
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          <path d="M 9 39 L 36 39 L 36 33 L 33 30 L 33 18 L 36 15 L 36 9 L 31 9 L 31 13 L 26 13 L 26 9 L 19 9 L 19 13 L 14 13 L 14 9 L 9 9 L 9 15 L 12 18 L 12 30 L 9 33 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-        </svg>
-      );
-    case "A": // Knight (Horse)
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          <path d="M 33,28.5 C 33,28.5 36,25.5 34.5,19.5 C 33,13.5 27,10.5 24,10.5 C 21,10.5 15,13.5 15,19.5 C 15,22.5 16.5,24 16.5,24 C 16.5,24 13.5,25.5 13.5,30 C 13.5,34.5 19.5,37.5 22.5,37.5 C 25.5,37.5 31.5,36 33,28.5 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          <path d="M 25.5 16.5 A 1.5 1.5 0 1 1 22.5 16.5 A 1.5 1.5 0 1 1 25.5 16.5 Z" fill={stroke} />
-        </svg>
-      );
-    case "F": // Elephant
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          <path d="M 12 33 C 12 21 16 15 22.5 15 C 29 15 33 21 33 33 C 33 36 29 39 22.5 39 C 16 39 12 36 12 33 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          {/* Trunk */}
-          <path d="M 16 27 C 12 27 9 29 9 33 C 9 36 12 38 15 38" fill="none" stroke={stroke} strokeWidth={strokeWidth} />
-          <circle cx="21" cy="21" r="2.5" fill={stroke} />
-        </svg>
-      );
-    case "D": // Camel
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          {/* Two humps outline */}
-          <path d="M 12 30 C 12 21 16 18 19 21 C 22 24 25 18 29 21 C 33 24 33 30 33 33 L 12 33 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          {/* Neck & Head */}
-          <path d="M 29 24 L 34 16 L 38 18" fill="none" stroke={stroke} strokeWidth={strokeWidth} strokeLinecap="round" />
-          {/* Saddle */}
-          <path d="M 19 23 L 25 23" fill="none" stroke={stroke} strokeWidth={strokeWidth} />
-        </svg>
-      );
-    case "Z": // Giraffe
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          {/* Body */}
-          <path d="M 15 30 L 27 30 L 27 36 L 15 36 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          {/* Long Neck & Head */}
-          <path d="M 24 30 L 24 12 C 24 12 25 9 28 9 L 30 11" fill="none" stroke={stroke} strokeWidth={strokeWidth} strokeLinecap="round" />
-          <circle cx="27" cy="13" r="1.5" fill={stroke} />
-        </svg>
-      );
-    case "M": // Siege Engine (Catapult)
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          {/* Base structure */}
-          <path d="M 10 33 L 35 33 L 32 24 L 13 24 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          {/* Wheels */}
-          <circle cx="16" cy="35" r="4.5" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          <circle cx="29" cy="35" r="4.5" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          {/* Arm */}
-          <path d="M 22 27 L 33 13 C 33 13 36 15 35 18" fill="none" stroke={stroke} strokeWidth={strokeWidth} />
-        </svg>
-      );
-    case "Ş": // King
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          <path d="M 9 36 L 36 36 L 33 21 L 28 27 L 22.5 15 L 17 27 L 12 21 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          <path d="M 22.5 9 L 22.5 15 M 19.5 12 L 25.5 12" stroke={stroke} strokeWidth={strokeWidth} />
-        </svg>
-      );
-    case "V": // Vizier
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          <path d="M 12 36 L 33 36 L 30 21 L 25 26 L 22.5 15 L 20 26 L 15 21 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-        </svg>
-      );
-    case "Fe": // Fers
-      return (
-        <svg viewBox="0 0 45 45" className="w-10 h-10 select-none">
-          <path d="M 15 36 L 30 36 L 27 24 L 22.5 18 L 18 24 Z" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-          <circle cx="22.5" cy="13" r="3" fill={fill} stroke={stroke} strokeWidth={strokeWidth} />
-        </svg>
-      );
-    default:
-      return null;
-  }
-};
 
 /* ══════════════════════════════════════════
    ANA BİLEŞEN
@@ -273,12 +175,12 @@ export function MobileMenu({ showNotification }) {
 
   /* Bot state */
   const [expandedBot, setExpandedBot] = useState("kolay");
-  const [kolayTime, setKolayTime]     = useState("15.00");
-  const [ortaTime,  setOrtaTime]      = useState("10.00");
-  const [zorTime,   setZorTime]       = useState("5.00");
+  const [kolayTime, setKolayTime] = useState("15.00");
+  const [ortaTime, setOrtaTime] = useState("10.00");
+  const [zorTime, setZorTime] = useState("5.00");
   const [kolayCrowns, setKolayCrowns] = useState(1);
-  const [ortaCrowns,  setOrtaCrowns]  = useState(2);
-  const [zorCrowns,   setZorCrowns]   = useState(3);
+  const [ortaCrowns, setOrtaCrowns] = useState(2);
+  const [zorCrowns, setZorCrowns] = useState(3);
 
   /* Splash → main otomatik geçiş */
   useEffect(() => {
@@ -496,8 +398,8 @@ export function MobileMenu({ showNotification }) {
                 kolayTime === "15.00"
                   ? "30.00"
                   : kolayTime === "30.00"
-                  ? "10.00"
-                  : "15.00"
+                    ? "10.00"
+                    : "15.00"
               )
             }
             crowns={kolayCrowns}
@@ -522,8 +424,8 @@ export function MobileMenu({ showNotification }) {
                 ortaTime === "10.00"
                   ? "15.00"
                   : ortaTime === "15.00"
-                  ? "20.00"
-                  : "10.00"
+                    ? "20.00"
+                    : "10.00"
               )
             }
             crowns={ortaCrowns}
@@ -548,8 +450,8 @@ export function MobileMenu({ showNotification }) {
                 zorTime === "5.00"
                   ? "8.00"
                   : zorTime === "8.00"
-                  ? "3.00"
-                  : "5.00"
+                    ? "3.00"
+                    : "5.00"
               )
             }
             crowns={zorCrowns}
@@ -619,153 +521,17 @@ export function MobileMenu({ showNotification }) {
      6. OYNAMA EKRANI (BOT KISMI)
   ──────────────────────────────────────── */
   if (screen === "game-bot") {
+    let limit = 600;
+    if (activeBotLabel === "Kolay Bot") limit = 900;
+    else if (activeBotLabel === "Zor Bot") limit = 300;
+    
     return (
-      <div className="mobile-screen flex flex-col bg-[#0f2c1b] justify-between relative overflow-hidden select-none">
-        {/* Top Header */}
-        <div className="flex items-center justify-center py-3 bg-[#1e1e1e] border-b border-white/5 relative z-10">
-          <div className="flex items-center gap-2">
-            <img src={logoImg} alt="Logo" className="w-5 h-5 object-contain filter invert opacity-80" />
-            <span className="font-serif font-bold text-md tracking-wide text-white">Timur Satrancı</span>
-          </div>
-        </div>
-
-        {/* Bot Title Section */}
-        <div className="px-5 py-5 flex items-center gap-4 bg-[#143220] relative z-10">
-          {/* Robot Head Outline */}
-          <div className="w-16 h-16 flex items-center justify-center">
-            <img 
-              src={botImg} 
-              alt="Bot" 
-              className="w-14 h-14 object-contain filter invert brightness-200" 
-            />
-          </div>
-          <div className="flex flex-col">
-            <h2 className="font-batangas text-3xl font-bold text-white leading-tight">
-              {activeBotLabel}
-            </h2>
-          </div>
-        </div>
-
-        {/* 11x10 Chessboard Wrapper */}
-        <div className="flex-1 flex items-center justify-center p-3 relative z-10 bg-[#0d2115]">
-          <div className="w-full max-w-[390px] aspect-[11/10] bg-[#422d1b] border-4 border-[#7b1fa2] rounded-xl overflow-hidden shadow-2xl grid grid-cols-11 grid-rows-10">
-            {INITIAL_BOARD.map((row, rowIndex) => 
-              row.map((piece, colIndex) => {
-                const isDarkSquare = (rowIndex + colIndex) % 2 === 1;
-                return (
-                  <div 
-                    key={`${rowIndex}-${colIndex}`}
-                    className={`flex items-center justify-center relative w-full h-full ${
-                      isDarkSquare ? "bg-[#7c5636]" : "bg-[#c19975]"
-                    }`}
-                  >
-                    {piece && (
-                      <PieceSvg type={piece.type} isWhite={piece.isWhite} />
-                    )}
-                  </div>
-                );
-              })
-            )}
-          </div>
-        </div>
-
-        {/* Timers & Moves Section */}
-        <div className="bg-[#0f2c1b] px-4 py-3 border-t border-white/5 relative z-10">
-          <div className="flex justify-between items-center mb-3">
-            {/* White/Player Timer */}
-            <div className="flex items-center gap-2 bg-[#f5eedc] text-[#141f1b] font-bold px-4 py-2.5 rounded-xl shadow-md min-w-[110px] justify-center">
-              <span className="text-lg">⏳</span>
-              <span className="font-mono text-base tracking-tight font-extrabold">13.05</span>
-            </div>
-
-            {/* Black/Bot Timer */}
-            <div className="flex items-center gap-2 bg-black/90 text-white font-bold px-4 py-2.5 rounded-xl border border-white/10 shadow-md min-w-[110px] justify-center">
-              <span className="text-lg">⏳</span>
-              <span className="font-mono text-base tracking-tight font-extrabold">12.33</span>
-            </div>
-          </div>
-
-          {/* Move Navigation Row */}
-          <div className="flex items-center justify-between bg-[#0a1e12] py-2.5 px-4 rounded-xl border border-white/[0.03]">
-            <button 
-              onClick={() => showNotification("Önceki hamleye gidiliyor", "info")}
-              className="text-white/60 hover:text-white active:scale-95 transition-transform"
-            >
-              <ArrowLeft size={20} strokeWidth={2.5} />
-            </button>
-            <span className="text-xs font-semibold tracking-wider text-emerald-400 font-mono">
-              1. e4 e5 2. Af4
-            </span>
-            <button 
-              onClick={() => showNotification("Sonraki hamleye gidiliyor", "info")}
-              className="text-white/60 hover:text-white active:scale-95 transition-transform rotate-180"
-            >
-              <ArrowLeft size={20} strokeWidth={2.5} />
-            </button>
-          </div>
-        </div>
-
-        {/* Bottom Actions Bar */}
-        <div className="bg-[#f5eedc] grid grid-cols-4 pt-3 pb-6 border-t border-[#141f1b]/10 select-none relative z-10 shadow-[0_-4px_16px_rgba(0,0,0,0.15)]">
-          <button 
-            onClick={() => showNotification("Seçenekler açılıyor", "info")}
-            className="flex flex-col items-center gap-1 text-[#141f1b] hover:opacity-85 active:scale-95 transition-all cursor-pointer"
-          >
-            {/* List Icon */}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" className="w-6 h-6">
-              <line x1="8" y1="6" x2="21" y2="6" />
-              <line x1="8" y1="12" x2="21" y2="12" />
-              <line x1="8" y1="18" x2="21" y2="18" />
-              <circle cx="3" cy="6" r="1" fill="currentColor" />
-              <circle cx="3" cy="12" r="1" fill="currentColor" />
-              <circle cx="3" cy="18" r="1" fill="currentColor" />
-            </svg>
-            <span className="text-[10px] font-bold font-primary tracking-wide">Seçenekler</span>
-          </button>
-
-          <button 
-            onClick={() => {
-              showNotification("Maçtan çekildiniz.", "error");
-              setScreen("bot");
-            }}
-            className="flex flex-col items-center gap-1 text-[#141f1b] hover:opacity-85 active:scale-95 transition-all cursor-pointer"
-          >
-            {/* Flag Icon */}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-              <line x1="4" y1="22" x2="4" y2="15" />
-            </svg>
-            <span className="text-[10px] font-bold font-primary tracking-wide">Terk et</span>
-          </button>
-
-          <button 
-            onClick={() => showNotification("Hamle ipucu oluşturuluyor...", "info")}
-            className="flex flex-col items-center gap-1 text-[#141f1b] hover:opacity-85 active:scale-95 transition-all cursor-pointer"
-          >
-            {/* Lightbulb Icon */}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-              <path d="M9 21h6" />
-              <path d="M9 17h6" />
-              <path d="M12 2v1" />
-              <path d="M12 13V5" />
-              <path d="M12 17c-2.76 0-5-2.24-5-5a5 5 0 0 1 10 0c0 2.76-2.24 5-5 5z" />
-            </svg>
-            <span className="text-[10px] font-bold font-primary tracking-wide">İpucu</span>
-          </button>
-
-          <button 
-            onClick={() => showNotification("Son hamle geri alınıyor...", "info")}
-            className="flex flex-col items-center gap-1 text-[#141f1b] hover:opacity-85 active:scale-95 transition-all cursor-pointer"
-          >
-            {/* Undo Icon */}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
-              <path d="M3 7v6h6" />
-              <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
-            </svg>
-            <span className="text-[10px] font-bold font-primary tracking-wide">Geri al</span>
-          </button>
-        </div>
-      </div>
+      <EkrandaOyna
+        onBack={() => setScreen("bot")}
+        showNotification={showNotification}
+        vsBot={true}
+        initialTimeSeconds={limit}
+      />
     );
   }
 
@@ -794,7 +560,7 @@ export function MobileMenu({ showNotification }) {
 
         {/* 3D Isometric Map Area */}
         <div className="flex-1 relative flex items-center justify-center p-4">
-          
+
           {/* Path connectors (dotted glowing lines behind islands) */}
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
             {/* Path connecting Island 4 to 3 */}
@@ -879,10 +645,10 @@ export function MobileMenu({ showNotification }) {
 
           {/* Pieces logo at bottom left */}
           <div className="absolute bottom-4 left-4 z-20">
-            <img 
-              src={logoImg} 
-              alt="Logo" 
-              className="w-20 h-20 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]" 
+            <img
+              src={logoImg}
+              alt="Logo"
+              className="w-20 h-20 object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]"
             />
           </div>
 
