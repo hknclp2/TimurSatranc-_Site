@@ -892,8 +892,15 @@ function GameScreen({ config, onBack, showNotification, vsBot }) {
    ANA BİLEŞEN — STATE MACHINE
 ════════════════════════════════════════════════════════ */
 export function EkrandaOyna({ onBack, showNotification, initialTimeSeconds, vsBot }) {
-  const [gameState, setGameState] = useState("setup"); // "setup" | "playing"
-  const [config, setConfig] = useState(null);
+  // Bot modunda setup ekranını atla — direkt oyuna başla
+  const defaultBotConfig = {
+    whiteName: "Sen",
+    blackName: "Yapay Zeka",
+    timeSeconds: initialTimeSeconds ?? 600,
+  };
+
+  const [gameState, setGameState] = useState(vsBot ? "playing" : "setup");
+  const [config, setConfig] = useState(vsBot ? defaultBotConfig : null);
 
   function handleStart(cfg) {
     setConfig(cfg);
@@ -913,7 +920,7 @@ export function EkrandaOyna({ onBack, showNotification, initialTimeSeconds, vsBo
   return (
     <GameScreen
       config={config}
-      onBack={() => setGameState("setup")}
+      onBack={vsBot ? onBack : () => setGameState("setup")}
       showNotification={showNotification}
       vsBot={vsBot}
     />
