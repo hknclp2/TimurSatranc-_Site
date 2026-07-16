@@ -891,7 +891,7 @@ function GameScreen({ config, onBack, showNotification, vsBot }) {
 /* ════════════════════════════════════════════════════════
    ANA BİLEŞEN — STATE MACHINE
 ════════════════════════════════════════════════════════ */
-export function EkrandaOyna({ onBack, showNotification, initialTimeSeconds }) {
+export function EkrandaOyna({ onBack, showNotification, initialTimeSeconds, vsBot }) {
   const [gameState, setGameState] = useState("setup"); // "setup" | "playing"
   const [config, setConfig] = useState(null);
 
@@ -915,6 +915,7 @@ export function EkrandaOyna({ onBack, showNotification, initialTimeSeconds }) {
       config={config}
       onBack={() => setGameState("setup")}
       showNotification={showNotification}
+      vsBot={vsBot}
     />
   );
 }

@@ -143,11 +143,12 @@ function App() {
       {/* DYNAMIC INTERFACE LAYERS */}
       {isUnityActive ? (
         // Game active state
-        gameMode === "screen" ? (
-          // 2D Local Board — rendered entirely in React
+        (gameMode === "screen" || gameMode === "bot") ? (
+          // 2D Board — rendered entirely in React (local or bot)
           <EkrandaOyna
             onBack={handleExitGame}
             showNotification={showNotification}
+            vsBot={gameMode === "bot"}
           />
         ) : (
           // Unity WebGL (Bot / Online) — Canvas in background + Overlay GUI on top
